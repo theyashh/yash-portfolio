@@ -1,15 +1,14 @@
 {
   "name": "portfolio-fullstack",
-  "homepage": "https://theyashh.github.io/yash-portfolio",
+  
   "private": true,
   "scripts": {
     "client": "cd client && npm run dev",
     "server": "cd server && npm run dev",
     "dev": "concurrently \"npm:server\" \"npm:client\"",
     "build": "cd client && npm run build && cd ../server && npm run build",
-    "start": "node server/dist/index.js",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "start": "node server/dist/index.js"
+    
   },
   "dependencies": {
     "gh-pages": "^6.3.0"
