@@ -8,7 +8,7 @@ import "./styles/globals.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Router>
+    <Router basename="/yash-portfolio">
       <App />
     </Router>
   </React.StrictMode>
