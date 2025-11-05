@@ -11,7 +11,6 @@ export default function Experience() {
       role: "Frontend Developer Intern",
       company: "SkillsCapital",
       logo: skillscapital,
-      // website: "https://www.deltait.co.in/contact-us/",
       year: "2025",
       skills: [
         "Frontend Development",
@@ -20,7 +19,7 @@ export default function Experience() {
       ],
       project: "Industry Log Management & Employee Management",
       duration: "6 months",
-      desc: "Built and deployed responsive web apps using Vite+React.js.Integrated RESTful APIs to enhance functionality and performance.Optimized UI for speed, scalability, and cross-device compatibility.Delivered multiple production-ready projects within deadlines.",
+      desc: "Built and deployed responsive web apps using Vite+React.js. Integrated RESTful APIs to enhance functionality and performance. Optimized UI for speed, scalability, and cross-device compatibility. Delivered multiple production-ready projects within deadlines.",
     },
     {
       role: "Frontend Developer Intern",
@@ -52,12 +51,13 @@ export default function Experience() {
         {experiences.map((exp, i) => (
           <motion.div
             key={i}
-            className="relative frosted-card p-6 sm:p-8 rounded-2xl border transition-all duration-500 hover:shadow-[0_0_25px_rgba(0,150,255,0.4)]"
+            layout
+            className="relative frosted-card p-6 sm:p-8 rounded-2xl border transition-all duration-500"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            {/* Header with Logo and Company */}
+            {/* Header */}
             <div className="flex items-center justify-between flex-wrap gap-4 mb-3">
               <div>
                 <h3 className="text-xl sm:text-2xl font-bold text-blue-500 mb-1">
@@ -85,8 +85,9 @@ export default function Experience() {
 
             {/* Expand/Collapse Section */}
             <AnimatePresence>
-              {expanded === i ? (
+              {expanded === i && (
                 <motion.div
+                  layout
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
@@ -106,19 +107,23 @@ export default function Experience() {
                     <p className="pt-2 text-justify">{exp.desc}</p>
                   </div>
                 </motion.div>
-              ) : (
-                <motion.p
-                  className="mt-4 text-gray-600 dark:text-gray-400 text-justify overflow-hidden"
-                  style={{
-                    display: "-webkit-box",
-                    WebkitLineClamp: 2,
-                    WebkitBoxOrient: "vertical",
-                  }}
-                >
-                  {exp.desc}
-                </motion.p>
               )}
             </AnimatePresence>
+
+            {/* Summary when collapsed */}
+            {expanded !== i && (
+              <motion.p
+                layout
+                className="mt-4 text-gray-600 dark:text-gray-400 text-justify overflow-hidden"
+                style={{
+                  display: "-webkit-box",
+                  WebkitLineClamp: 2,
+                  WebkitBoxOrient: "vertical",
+                }}
+              >
+                {exp.desc}
+              </motion.p>
+            )}
 
             {/* Button */}
             <button
@@ -149,11 +154,9 @@ export default function Experience() {
           box-shadow:
             0 8px 32px rgba(31, 38, 135, 0.37),
             inset 0 0 10px rgba(255, 255, 255, 0.1);
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          transition: all 0.3s ease;
         }
-        .frosted-card:hover {
-          transform: translateY(-6px);
-        }
+
         .glass-btn {
           background: rgba(255, 255, 255, 0.2);
           backdrop-filter: blur(10px);
@@ -162,12 +165,14 @@ export default function Experience() {
           color: #0ea5e9;
           box-shadow: 0 0 12px rgba(14, 165, 233, 0.3);
         }
+
         .glass-btn:hover {
           box-shadow:
             0 0 20px rgba(14, 165, 233, 0.5),
             inset 0 0 10px rgba(14, 165, 233, 0.3);
           transform: scale(1.05);
         }
+
         [data-theme='dark'] .frosted-card {
           background: rgba(13, 17, 23, 0.4);
           border: 1px solid rgba(255, 255, 255, 0.15);

@@ -95,9 +95,7 @@ export default function Projects() {
   return (
     <section
       className="min-h-screen flex flex-col items-center justify-center px-6 py-20"
-      style={{
-        marginTop: "50px", // Adjust this if your navbar height differs
-      }}
+      style={{ marginTop: "50px" }}
     >
       <h2 className="text-2xl sm:text-4xl font-extrabold mb-12 bg-gradient-to-r from-blue-600 to-cyan-400 text-transparent bg-clip-text">
         Projects
@@ -149,96 +147,126 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* Modal */}
+      {/* Popup Modal */}
+      {/* Popup Modal */}
       <AnimatePresence>
         {selected && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-start justify-center bg-black/70 backdrop-blur-md p-4 pt-24"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/0 dark:bg-black/0 backdrop-blur-md p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
             <motion.div
-              className="relative frosted-card max-w-3xl w-full p-6 rounded-2xl overflow-y-auto max-h-[85vh] scrollbar-hide"
-              initial={{ scale: 0.9, y: 40 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, y: 40 }}
-              transition={{ duration: 0.4 }}
+              className="relative mt-20 w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl border transition-all duration-300 
+          bg-white/50 dark:bg-gray-900/50 
+          backdrop-blur-xl 
+          border-gray-200/40 dark:border-white/20"
+              initial={{ scale: 0.9, y: 40, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0.9, y: 40, opacity: 0 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
             >
+              {/* Close Button */}
               <button
                 onClick={() => setOpen(null)}
-                className="absolute top-4 right-4 text-gray-600 dark:text-gray-300 hover:text-red-500 transition-colors"
+                className="absolute top-4 right-4 text-gray-800 dark:text-gray-300 hover:text-red-400 transition-all duration-200 z-10"
               >
-                <CloseIcon />
+                <CloseIcon fontSize="medium" />
               </button>
 
-              <h3 className="text-2xl font-bold mb-2 text-blue-500">
-                {selected.title}
-              </h3>
-              <h4 className="font-semibold text-blue-400 mb-1">
-                {selected.details.university}
-              </h4>
-              <a
-                href={selected.details.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-blue-300 underline mb-3 inline-block"
-              >
-                Visit University Website
-              </a>
+              {/* Scrollable Content */}
+              <div className="max-h-[85vh] overflow-y-auto scrollbar-hide p-6 sm:p-10">
+                <h3 className="text-3xl font-extrabold bg-gradient-to-r from-blue-500 to-cyan-400 text-transparent bg-clip-text mb-3">
+                  {selected.title}
+                </h3>
+                <p className="text-sm text-black-100 dark:text-white-100 italic mb-4">
+                  {selected.details.university}
+                </p>
 
-              <p className="text-gray-300 mt-2">{selected.details.paragraph}</p>
+                <a
+                  href={selected.details.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mb-6 text-sm font-semibold text-blue-500 dark:text-cyan-300 hover:underline"
+                >
+                  Visit University Website ↗
+                </a>
 
-              <div className="mt-4 space-y-2">
-                {selected.details.subHeadings.map((sh, i) => (
-                  <p key={i} className="text-gray-200 font-medium">
-                    • {sh}
-                  </p>
-                ))}
-              </div>
-
-              <div className="mt-6 flex flex-col items-center">
-                <img
+                <motion.img
                   src={selected.image}
-                  alt={`${selected.title} project`}
-                  className="rounded-xl w-full object-cover shadow-lg"
+                  alt={selected.title}
+                  className="rounded-2xl w-full object-cover mb-6 shadow-[0_0_40px_rgba(0,150,255,0.25)]"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 200 }}
                 />
+
+                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                  {selected.details.paragraph}
+                </p>
+
+                <div className="grid sm:grid-cols-2 gap-3">
+                  {selected.details.subHeadings.map((sh, i) => (
+                    <motion.div
+                      key={i}
+                      whileHover={{ scale: 1.05 }}
+                      className="px-4 py-2 rounded-lg text-center bg-gradient-to-r 
+                from-blue-100/40 to-cyan-100/40 
+                dark:from-gray-700/60 dark:to-gray-800/60 
+                border border-white/20 
+                text-blue-600 dark:text-cyan-300 font-medium text-sm shadow-[0_0_15px_rgba(0,150,255,0.15)]"
+                    >
+                      {sh}
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Reuse same theme styles as Experience page */}
       <style>{`
         .frosted-card {
-          background: rgba(255, 255, 255, 0.15);
+          background: rgba(255, 255, 255, 0);
           border: 1px solid rgba(255, 255, 255, 0.25);
-          backdrop-filter: blur(18px) saturate(180%);
-          -webkit-backdrop-filter: blur(18px) saturate(180%);
+          backdrop-filter: blur(25px) saturate(180%);
+          border-radius: 22px;
           box-shadow:
-            0 8px 32px rgba(31, 38, 135, 0.37),
-            inset 0 0 10px rgba(255, 255, 255, 0.1);
+            0 10px 30px rgba(31, 38, 135, 0.3),
+            inset 0 0 10px rgba(255, 255, 255, 0.15);
+          transform-style: preserve-3d;
+          transform: perspective(900px) rotateX(2deg) rotateY(-2deg);
+          transition: all 0.4s ease-in-out;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .frosted-card:hover {
+          transform: perspective(900px) rotateX(0deg) rotateY(0deg) scale(1.05);
+          box-shadow:
+            0 25px 45px rgba(31, 38, 135, 0.45),
+            inset 0 0 15px rgba(255, 255, 255, 0.25);
         }
 
         .glass-btn {
           background: rgba(255, 255, 255, 0.2);
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(12px);
           border: 1px solid rgba(255, 255, 255, 0.3);
           color: #0ea5e9;
-          box-shadow: 0 0 12px rgba(14, 165, 233, 0.3);
+          box-shadow: 0 0 15px rgba(14, 165, 233, 0.4);
+          transition: all 0.3s ease-in-out;
         }
 
         .glass-btn:hover {
           box-shadow:
-            0 0 20px rgba(14, 165, 233, 0.5),
-            inset 0 0 10px rgba(14, 165, 233, 0.3);
-          transform: scale(1.05);
+            0 0 25px rgba(14, 165, 233, 0.7),
+            inset 0 0 12px rgba(14, 165, 233, 0.3);
+          transform: scale(1.07);
         }
 
         [data-theme='dark'] .frosted-card {
-          background: rgba(13, 17, 23, 0.4);
+          background: rgba(13, 17, 23, 0.45);
           border: 1px solid rgba(255, 255, 255, 0.15);
         }
       `}</style>
