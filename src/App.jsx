@@ -10,8 +10,8 @@ import Projects from "./routes/Projects";
 import Experience from "./routes/Experience";
 import CurrentLearning from "./routes/CurrentLearning";
 import Blog from "./routes/Blog";
-// import BlogPost from "./routes/BlogPost";
 import Contact from "./routes/Contact";
+import Resume from "./routes/Resume";
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -56,6 +56,8 @@ export default function App() {
             <Route path="/experience" element={<Experience />} />
             <Route path="/learning" element={<CurrentLearning />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/resume" element={<Resume />} />
+
             {/* <Route path="/blog/:slug" element={<BlogPost />} /> */}
             <Route path="/contact" element={<Contact />} />
           </Routes>
