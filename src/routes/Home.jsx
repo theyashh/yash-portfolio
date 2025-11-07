@@ -5,6 +5,9 @@ import { useTheme } from "@mui/material/styles";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { ReactTyped } from "react-typed";
 import cat from "../assets/cat.gif";
+import developer from "../assets/developer.gif";
+import web_Development from "../assets/Web_Development.gif";
+import developer_male from "../assets/developer_male.png";
 
 export default function Home() {
   const theme = useTheme();
@@ -173,7 +176,7 @@ export default function Home() {
       </div>
 
       {/* HERO */}
-      <section className="relative pt-40 pb-12 px-6 sm:px-10">
+      <section className="relative pt-40 pb-15 px-6 sm:px-10">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -217,7 +220,7 @@ export default function Home() {
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full btn-ghost"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-semibold btn-cta"
               >
                 Contact
               </Link>
@@ -246,81 +249,131 @@ export default function Home() {
             } rounded-2xl p-4 sm:p-6 shadow-2xl`}
           >
             <img
-              src={gifUrl}
-              onError={(e) => (e.currentTarget.src = fallbackGif)}
-              alt="dev gif"
-              className="rounded-xl w-[230px] sm:w-[320px] md:w-[420px]"
+              src={developer_male}
+              alt="dev"
+              // alt="dev gif"
+              className="rounded-3xl w-[230px] sm:w-[320px] md:w-[420px]"
             />
           </motion.div>
         </div>
       </section>
 
       {/* ABOUT (flashy reveal) */}
-      <section className="px-6 sm:px-10">
+      {/* ABOUT (Enhanced Design + Animation) */}
+      <section className="px-6 sm:px-10 mt-20">
         <motion.div
           ref={aboutRef}
-          initial={{ opacity: 0, y: 40, scale: 0.98 }}
+          initial={{ opacity: 0, y: 60, scale: 0.95 }}
           animate={aboutInView ? { opacity: 1, y: 0, scale: 1 } : {}}
           transition={{
-            duration: 0.9,
-            delay: 0.08,
-            type: "spring",
-            stiffness: 80,
+            duration: 1,
+            ease: "easeOut",
           }}
-          className="max-w-5xl mx-auto mt-12 p-8 rounded-3xl backdrop-blur-xl border"
+          className="relative max-w-6xl mx-auto overflow-hidden rounded-3xl border backdrop-blur-2xl"
           style={{
             background: isDark
-              ? "rgba(255,255,255,0.03)"
-              : "rgba(255,255,255,0.86)",
-            borderColor: isDark
-              ? "rgba(255,255,255,0.06)"
-              : "rgba(15,23,42,0.06)",
+              ? "linear-gradient(145deg, rgba(10,15,25,0.75), rgba(20,30,50,0.85))"
+              : "linear-gradient(145deg, rgba(255,255,255,0.8), rgba(245,250,255,0.9))",
+            borderColor: isDark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.08)",
             boxShadow: isDark
-              ? "0 12px 40px rgba(2,6,23,0.6)"
-              : "0 12px 40px rgba(13,40,59,0.06)",
+              ? "0 0 50px rgba(0,150,255,0.15)"
+              : "0 0 40px rgba(0,100,255,0.1)",
           }}
         >
-          <div className="flex flex-col md:flex-row items-center gap-6">
-            <div className="flex-none w-full md:w-1/3 text-center md:text-left">
-              <h3 className="text-2xl font-bold text-blue-400">About Me</h3>
-              <p className="mt-3 text-sm text-gray-300 max-w-md">
-                I'm a full-stack dev focused on building production-ready
-                applications. I like working on end-to-end systems, ML/AI
-                integrations, and intuitive UI.
+          {/* Animated gradient ring */}
+          <motion.div
+            className="absolute inset-0 rounded-3xl opacity-40 blur-3xl"
+            animate={{
+              background: [
+                "linear-gradient(120deg, rgba(0,145,255,0.25), rgba(147,51,234,0.25))",
+                "linear-gradient(120deg, rgba(147,51,234,0.25), rgba(6,182,212,0.25))",
+                "linear-gradient(120deg, rgba(6,182,212,0.25), rgba(0,145,255,0.25))",
+              ],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              repeatType: "reverse",
+            }}
+          ></motion.div>
+
+          <div className="relative z-10 grid md:grid-cols-2 gap-10 p-10 items-center">
+            {/* Left side – text */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <h2 className="text-3xl font-extrabold text-blue-400 mb-3">
+                About Me
+              </h2>
+              <p className="dark:text-gray-300 text-gray-700 text-base leading-relaxed">
+                I’m{" "}
+                <span className="font-semibold text-blue-400">Yash Roy</span>, a
+                passionate
+                <strong> Full-Stack Developer</strong> who loves crafting
+                modern, responsive web apps with <strong>React</strong> &{" "}
+                <strong>Node.js</strong>. My focus is building intuitive UI,
+                scalable APIs, and integrating
+                <strong> AI models</strong> into real-world projects.
               </p>
-            </div>
 
-            <div className="flex-1 grid gap-3">
-              <div className="grid grid-cols-2 gap-3">
+              <motion.div
+                className="mt-6 grid grid-cols-2 gap-4 text-sm"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+              >
                 <div className="p-4 rounded-xl glass-card">
-                  <h4 className="font-semibold">Backend</h4>
-                  <p className="text-sm text-gray-300 mt-1">
-                    Node.js, Express, REST, PostgreSQL
+                  <h4 className="font-semibold text-blue-300">Backend</h4>
+                  <p className="text-gray-400 mt-1">
+                    Node.js, Express, MongoDB, SQL
                   </p>
                 </div>
                 <div className="p-4 rounded-xl glass-card">
-                  <h4 className="font-semibold">Frontend</h4>
-                  <p className="text-sm text-gray-300 mt-1">
-                    React, Tailwind, MUI, SPA UX
-                  </p>
+                  <h4 className="font-semibold text-blue-300">Frontend</h4>
+                  <p className="text-gray-400 mt-1">React, Tailwind, MUI</p>
                 </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
                 <div className="p-4 rounded-xl glass-card">
-                  <h4 className="font-semibold">CV / AI</h4>
-                  <p className="text-sm text-gray-300 mt-1">
-                    YOLO, OCR, PaddleOCR, TensorFlow
+                  <h4 className="font-semibold text-blue-300">AI / CV</h4>
+                  <p className="text-gray-400 mt-1">
+                    YOLOv10, PaddleOCR, TensorFlow
                   </p>
                 </div>
                 <div className="p-4 rounded-xl glass-card">
-                  <h4 className="font-semibold">Tools</h4>
-                  <p className="text-sm text-gray-300 mt-1">
+                  <h4 className="font-semibold text-blue-300">Tools</h4>
+                  <p className="text-gray-400 mt-1">
                     Git, Docker, CI/CD, Linux
                   </p>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
+
+            {/* Right side – floating card / image */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="relative flex justify-center"
+            >
+              <motion.div
+                animate={{
+                  y: [0, -10, 0],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="rounded-2xl overflow-hidden shadow-2xl border border-blue-500/20"
+              >
+                <img
+                  src={developer}
+                  alt="dev"
+                  className="w-[350px] sm:w-[420px] md:w-[480px] rounded-2xl"
+                />
+              </motion.div>
+            </motion.div>
           </div>
         </motion.div>
       </section>
@@ -331,7 +384,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="text-3xl font-bold text-center mb-8 text-blue-400"
+          className="text-3xl font-bold text-center mb-8 text-blue-500"
         >
           Featured Projects
         </motion.h2>
@@ -350,7 +403,9 @@ export default function Home() {
                 <div>
                   <p className="text-xs font-medium text-blue-300">{p.tag}</p>
                   <h3 className="text-xl font-bold mt-2">{p.title}</h3>
-                  <p className="mt-2 text-sm text-gray-300">{p.desc}</p>
+                  <p className="mt-2 text-sm text-sm dark:text-gray-400 text-gray-600">
+                    {p.desc}
+                  </p>
                 </div>
               </div>
 
@@ -369,7 +424,7 @@ export default function Home() {
       </section>
 
       {/* TECH STACK CAROUSEL */}
-      <section className="px-6 sm:px-10 mt-16">
+      <section className="px-6 sm:px-20 mt-16">
         <motion.h3
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -379,10 +434,10 @@ export default function Home() {
           Tech Stack
         </motion.h3>
 
-        <div className="max-w-6xl mx-auto overflow-hidden">
+        <div className="max-w-full mx-auto overflow-hidden">
           <motion.div
             className="flex gap-4 py-4"
-            animate={{ x: ["0%", "-30%"] }}
+            animate={{ x: ["0%", "-80%"] }}
             transition={{ repeat: Infinity, duration: 18, ease: "linear" }}
           >
             {[
@@ -447,32 +502,66 @@ export default function Home() {
       </section>
 
       {/* CTA */}
+      {/* CTA with animation */}
       <section className="px-6 sm:px-10 mt-20 mb-28">
         <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, type: "spring", stiffness: 80 }}
-          className="max-w-3xl mx-auto text-center p-8 rounded-3xl backdrop-blur-xl border"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{
+            opacity: 1,
+            scale: 1,
+            transition: { duration: 0.8, ease: "easeOut" },
+          }}
+          className="max-w-3xl mx-auto text-center p-10 rounded-3xl backdrop-blur-xl border relative overflow-hidden"
           style={{
             background: isDark
-              ? "rgba(255,255,255,0.03)"
-              : "rgba(255,255,255,0.9)",
+              ? "rgba(255, 255, 255, 0.05)"
+              : "rgba(148, 148, 148, 0.37)",
             borderColor: isDark
               ? "rgba(255,255,255,0.06)"
-              : "rgba(15,23,42,0.06)",
+              : "rgba(13, 35, 86, 0.06)",
           }}
         >
-          <h3 className="text-3xl font-bold text-blue-400">
+          {/* Animated glow ring */}
+          <motion.div
+            animate={{
+              scale: [1, 1.05, 1],
+              opacity: [0.4, 0.9, 0.4],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500/10 via-cyan-400/10 to-purple-500/10 blur-2xl"
+          ></motion.div>
+
+          {/* Floating text */}
+          <motion.h3
+            animate={{ y: [0, -8, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            className="relative text-3xl font-bold text-blue-400 drop-shadow-md"
+          >
             Let’s collaborate 🚀
-          </h3>
-          <p className="mt-3 text-gray-300">
+          </motion.h3>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="relative mt-3 dark:text-gray-200 text-gray-700"
+          >
             Have an idea or a project? I build things — let’s make it real.
-          </p>
-          <div className="mt-6">
-            <Link to="/contact" className="px-6 py-3 rounded-full btn-cta">
+          </motion.p>
+
+          <motion.div
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.96 }}
+            className="relative mt-8 inline-block"
+          >
+            <Link to="/contact" className="px-8 py-3 rounded-full btn-cta">
               Get in Touch
             </Link>
-          </div>
+          </motion.div>
         </motion.div>
       </section>
 
@@ -483,58 +572,99 @@ export default function Home() {
 
       {/* CSS */}
       <style>{`
-        /* buttons */
-        .btn-cta {
-          background: linear-gradient(135deg, rgba(0,145,255,0.25), rgba(0,145,255,0.12));
-          color: #0bf;
-          padding: 10px 18px;
-          border-radius: 999px;
-          font-weight: 700;
-          border: 1px solid rgba(0,145,255,0.16);
-          box-shadow: 0 12px 30px rgba(0,145,255,0.08);
-          transform-origin: center;
-        }
-        .btn-cta:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 20px 45px rgba(0,145,255,0.12); }
+      /* Buttons */
+      .btn-cta {
+        background: linear-gradient(135deg, rgba(0,145,255,0.35), rgba(0,145,255,0.18));
+        color: #0af;
+        padding: 10px 18px;
+        border-radius: 999px;
+        font-weight: 700;
+        border: 1px solid rgba(0,145,255,0.25);
+        box-shadow: 0 8px 25px rgba(0,145,255,0.15);
+        transition: all .3s ease;
+      }
+      .btn-cta:hover {
+        transform: translateY(-3px) scale(1.03);
+        box-shadow: 0 14px 40px rgba(0,145,255,0.25);
+      }
 
-        .btn-ghost {
-          background: rgba(255,255,255,0.06);
-          color: inherit;
-          padding: 10px 18px;
-          border-radius: 999px;
-          border: 1px solid rgba(255,255,255,0.06);
-        }
-        .btn-ghost:hover { transform: translateY(-3px); }
+      /* Glass skill pills */
+      .glass-skill {
+        background: linear-gradient(
+          145deg,
+          rgba(255,255,255,0.12),
+          rgba(255,255,255,0.04)
+        );
+        border: 1px solid rgba(120, 120, 120, 0.35);
+        padding: 6px 12px;
+        border-radius: 999px;
+        color: inherit;
+        transition: all .25s ease;
+        backdrop-filter: blur(10px) saturate(160%);
+      }
+      .glass-skill:hover {
+        background: rgba(59,130,246,0.15);
+        border-color: rgba(59,130,246,0.35);
+      }
 
-        .glass-skill {
-          background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-          border: 1px solid rgba(255,255,255,0.08);
-          padding: 6px 12px;
-          border-radius: 999px;
-        }
+      /* Glass card universal for light/dark */
+      .glass-card {
+        background: linear-gradient(
+          135deg,
+          rgba(255,255,255,0.18),
+          rgba(255,255,255,0.08)
+        );
+        border: 1px solid rgba(255,255,255,0.15);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        padding: 14px;
+        border-radius: 1rem;
+        transition: all .28s ease;
+        backdrop-filter: blur(12px) saturate(150%);
+      }
+      .dark .glass-card {
+        background: linear-gradient(
+          135deg,
+          rgba(20,25,38,0.55),
+          rgba(10,15,25,0.45)
+        );
+        border: 1px solid rgba(255,255,255,0.07);
+        box-shadow: 0 10px 40px rgba(2,6,23,0.6);
+      }
+      .glass-card:hover {
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 18px 45px rgba(2,6,23,0.25);
+      }
 
-        .glass-card {
-          background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-          border: 1px solid rgba(255,255,255,0.06);
-          padding: 14px;
-          transition: all .28s ease;
-          backdrop-filter: blur(10px) saturate(140%);
-        }
-        .glass-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 18px 50px rgba(2,6,23,0.25); }
+      /* Text readability */
+      .dark .text-gray-300 { color: rgba(230,230,230,0.85); }
+      .dark .text-gray-400 { color: rgba(210,210,210,0.7); }
+      .text-gray-700 { color: rgba(45,45,45,0.9); }
+      .text-gray-600 { color: rgba(65,65,65,0.85); }
 
-        .skill-pill { /* kept for legacy if used */ }
+      /* Text gradient accent */
+      .text-gradient {
+        background: linear-gradient(90deg, #60a5fa, #7c3aed, #06b6d4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
 
-        .text-gradient {
-          background: linear-gradient(90deg, #60a5fa, #7c3aed, #06b6d4);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
+      /* Cards (stats, tech tiles, etc.) readability in light mode */
+      .light .glass-card {
+        background: linear-gradient(
+          135deg,
+          rgba(181, 13, 13, 0.85),
+          rgba(245,245,255,0.75)
+        );
+        border: 1px solid rgba(30,60,120,0.1);
+        box-shadow: 0 6px 22px rgba(13,40,59,0.08);
+      }
 
-        /* responsive tweaks */
-        @media (max-width: 640px) {
-          .glass-card { padding: 12px; }
-          .btn-cta { padding: 10px 14px; }
-        }
-      `}</style>
+      /* Small screens */
+      @media (max-width: 640px) {
+        .glass-card { padding: 12px; }
+        .btn-cta { padding: 10px 14px; }
+      }
+    `}</style>
     </main>
   );
 }

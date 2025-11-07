@@ -85,90 +85,137 @@ export default function Contact() {
     },
   ];
 
-  const third = Math.ceil(socials.length / 3);
-  const col1 = socials.slice(0, third);
-  const col2 = socials.slice(third, 2 * third);
-  const col3 = socials.slice(2 * third);
-
   return (
     <section
-      className="min-h-screen flex flex-col items-center justify-center px-6 py-24 md:py-20"
-      style={{
-        marginTop: "50px",
-      }}
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 py-24 md:py-20"
+      style={{ marginTop: "20px" }}
     >
+      {/* 🌌 Animated Gradient Background */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-br opacity-60"
+        animate={{
+          backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        style={{
+          backgroundSize: "200% 200%",
+          zIndex: 0,
+        }}
+      />
+
+      {/* ✨ Floating Particles */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        {[...Array(15)].map((_, i) => (
+          <motion.span
+            key={i}
+            className="absolute w-2 h-2 rounded-full bg-blue-400/30"
+            initial={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+            }}
+            animate={{
+              y: [0, -40, 0],
+              opacity: [0.2, 1, 0.2],
+            }}
+            transition={{
+              duration: 5 + Math.random() * 4,
+              repeat: Infinity,
+              delay: Math.random() * 3,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* 💎 Frosted Glass Card */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className={`w-full max-w-5xl rounded-3xl border p-12 sm:p-16 text-center frosted-card transition-all duration-500`}
+        className="relative z-10 w-full max-w-5xl rounded-3xl border p-10 sm:p-14 md:p-16 frosted-card text-center"
       >
-        {/* Title */}
         <motion.h2
-          className={`text-xl sm:text-2xl md:text-3xl font-extrabold mb-14 bg-gradient-to-r from-blue-600 to-cyan-400 text-transparent bg-clip-text`}
+          className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-10 bg-gradient-to-r from-blue-400 to-cyan-300 text-transparent bg-clip-text"
           animate={{ y: [0, -4, 0] }}
-          // transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         >
-          Connect with Me
+          Let’s Collaborate & Connect 🌐
         </motion.h2>
 
-        {/* Socials Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 justify-items-left marginLeft:20px">
-          {[col1, col2, col3].map((col, i) => (
-            <div key={i} className="flex flex-col items-left gap-4">
-              {col.map((item, j) => (
-                <motion.a
-                  key={j}
-                  href={item.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-4 text-lg font-semibold transition-all duration-300"
-                  whileHover={{
-                    scale: 1.1,
-                    x: 8,
-                    textShadow: `0 0 12px ${item.color}`,
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  style={{ color: item.color }}
-                >
-                  <motion.span
-                    className="text-3xl"
-                    whileHover={{
-                      rotate: [0, 10, -10, 0],
-                      transition: { duration: 0.4 },
-                    }}
-                  >
-                    {item.icon}
-                  </motion.span>
-                  <span className="opacity-90">{item.name}</span>
-                </motion.a>
-              ))}
-            </div>
+        {/* Social Icons */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 sm:gap-10 justify-items-center">
+          {socials.map((item, i) => (
+            <motion.a
+              key={i}
+              href={item.href}
+              target="_blank"
+              rel="noreferrer"
+              className="flex flex-col items-center gap-2 text-sm sm:text-base font-semibold"
+              whileHover={{
+                scale: 1.1,
+                textShadow: `0 0 10px ${item.color}`,
+              }}
+              style={{ color: item.color }}
+            >
+              <motion.span
+                className="text-3xl sm:text-4xl"
+                animate={{
+                  y: [0, -6, 0],
+                }}
+                transition={{
+                  duration: 4 + i * 0.3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                {item.icon}
+              </motion.span>
+              <span className="opacity-80">{item.name}</span>
+            </motion.a>
           ))}
         </div>
 
-        {/* Email */}
+        {/* 📧 Email */}
         <motion.p
-          className={`text-xl sm:text-2xl font-semibold mt-16 ${
-            darkMode ? "text-gray-400" : "text-gray-600"
+          className={`text-lg sm:text-xl font-semibold mt-10 ${
+            darkMode ? "text-gray-400" : "text-gray-700"
           }`}
-          animate={{ y: [0, -3, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          animate={{ opacity: [0.8, 1, 0.8] }}
+          transition={{ duration: 3, repeat: Infinity }}
         >
-          itsroysons@gmail.com
+          📩 itsroysons@gmail.com
         </motion.p>
+
+        {/* 💼 Buttons */}
+        <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <motion.a
+            href="mailto:itsroysons@gmail.com"
+            whileHover={{ scale: 1.05 }}
+            className="px-6 py-3 bg-blue-500 text-white rounded-xl shadow-lg hover:bg-blue-600 transition"
+          >
+            Say Hello 👋
+          </motion.a>
+
+          <motion.a
+            href="/resume.pdf"
+            target="_blank"
+            whileHover={{ scale: 1.05 }}
+            className="px-6 py-3 bg-gradient-to-r from-cyan-400 to-blue-500 text-white rounded-xl shadow-lg hover:opacity-90 transition"
+          >
+            📄 Download Resume
+          </motion.a>
+        </div>
       </motion.div>
 
-      {/* Frosted Card Styling */}
+      {/* 🌫️ Glass Effect Styles */}
       <style>{`
         .frosted-card {
-           background: rgba(255, 255, 255, 0.15);
+          background: rgba(255, 255, 255, 0.12);
           border: 1px solid rgba(255, 255, 255, 0.25);
-          backdrop-filter: blur(18px) saturate(180%);
-          -webkit-backdrop-filter: blur(18px) saturate(180%);
+          backdrop-filter: blur(16px) saturate(180%);
+          -webkit-backdrop-filter: blur(16px) saturate(180%);
           box-shadow:
             0 8px 32px rgba(31, 38, 135, 0.37),
-            inset 0 0 10px rgba(255, 255, 255, 0.1);
+            inset 0 0 15px rgba(255, 255, 255, 0.1);
         }
 
         .frosted-card:hover {
@@ -180,7 +227,7 @@ export default function Contact() {
 
         [data-theme='dark'] .frosted-card {
           background: rgba(13, 17, 23, 0.4);
-          border: 1px solid rgba(255, 255, 255, 0.15);
+          border: 1px solid rgba(255, 255, 255, 0.1);
         }
       `}</style>
     </section>

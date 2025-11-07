@@ -5,7 +5,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import sharda from "../assets/sharda.jpg";
 import pc from "../assets/pc.png";
 import sunshine from "../assets/sunshine.jpg";
-import catsee from "../assets/catsee.gif";
 
 export default function Education() {
   const [expanded, setExpanded] = useState(null);
@@ -50,6 +49,16 @@ export default function Education() {
     },
   ];
 
+  // animation for cards sliding in from the right
+  const cardVariants = {
+    hidden: { opacity: 0, x: 800 },
+    visible: (i) => ({
+      opacity: 1,
+      x: 0,
+      transition: { delay: i * 0.25, duration: 0.6, ease: "easeOut" },
+    }),
+  };
+
   return (
     <section
       className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 overflow-hidden"
@@ -64,9 +73,10 @@ export default function Education() {
           <motion.div
             key={i}
             className="relative frosted-card p-8 rounded-2xl border transition-all duration-500"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            variants={cardVariants}
+            initial="hidden"
+            animate="visible"
+            custom={i}
           >
             <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-3">
               <div>
@@ -146,24 +156,6 @@ export default function Education() {
         ))}
       </div>
 
-      {/* Floating Cat */}
-      <motion.div
-        className="fixed top-4 right-0 z-[9999] pointer-events-none"
-        animate={{ y: [0, -8, 0] }}
-        transition={{
-          duration: 1.5,
-          repeat: Infinity,
-          repeatDelay: 15,
-          ease: "easeInOut",
-        }}
-      >
-        <img
-          src={catsee}
-          alt="Walking Cat"
-          className="mt-40 w-40 object-contain drop-shadow-[0_0_10px_rgba(14,165,233,0)]"
-        />
-      </motion.div>
-
       <style>{`
         .frosted-card {
           background: rgba(255, 255, 255, 0);
@@ -180,32 +172,11 @@ export default function Education() {
           overflow: hidden;
         }
 
-        .frosted-card::before {
-          content: "";
-          position: absolute;
-          top: -50%;
-          left: -50%;
-          width: 200%;
-          height: 200%;
-          background: radial-gradient(
-            circle at 25% 25%,
-            rgba(255, 255, 255, 0.2),
-            transparent 70%
-          );
-          transform: rotate(25deg);
-          opacity: 0;
-          transition: opacity 0.5s;
-        }
-
-        .frosted-card:hover::before {
-          opacity: 0;
-        }
-
         .frosted-card:hover {
-          transform: perspective(900px) rotateX(0deg) rotateY(0deg) scale(1.05);
           box-shadow:
-            0 25px 45px rgba(31, 38, 135, 0.45),
-            inset 0 0 15px rgba(255, 255, 255, 0.25);
+            0 0 25px rgba(14, 165, 233, 0.4),
+            inset 0 0 10px rgba(14, 165, 233, 0.3);
+          transform: scale(1.01);
         }
 
         .glass-btn {

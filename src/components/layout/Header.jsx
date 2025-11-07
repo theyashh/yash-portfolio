@@ -31,7 +31,11 @@ export default function Header({ darkMode, setDarkMode }) {
   // ✅ Close menu on outside click
   useEffect(() => {
     function handleClickOutside(e) {
-      if (menuRef.current && !menuRef.current.contains(e.target)) {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(e.target) &&
+        !e.target.closest(".menu-toggle-btn")
+      ) {
         setMenuOpen(false);
       }
     }
@@ -56,6 +60,7 @@ export default function Header({ darkMode, setDarkMode }) {
             transform: "translateX(-50%)",
             width: { xs: "80%", md: "80%" },
             borderRadius: "20px",
+            zIndex: 1400, // ✅ ensures cross button is clickable
             background: darkMode
               ? "rgba(255,255,255,0)"
               : "rgba(255,255,255,0)",
@@ -138,16 +143,16 @@ export default function Header({ darkMode, setDarkMode }) {
                     sx={{
                       width: 40,
                       height: 40,
-                      borderRadius: "15px",
-                      backdropFilter: "blur(12px)",
-                      WebkitBackdropFilter: "blur(12px)",
+                      borderRadius: "20px",
                       background: darkMode
-                        ? "rgba(255,255,255,0.3)"
-                        : "rgba(255,255,255,0.3)",
+                        ? "rgba(255,255,255,0)"
+                        : "rgba(255,255,255,0)",
+                      backdropFilter: "blur(16px)",
+                      WebkitBackdropFilter: "blur(16px)",
 
                       border: darkMode
-                        ? "1px solid rgba(255,255,255,0.15)"
-                        : "1px solid rgba(0,0,0,0.1)",
+                        ? "0px solid rgba(255,255,255,0.15)"
+                        : "0px solid rgba(0,0,0,0.1)",
                       boxShadow: darkMode
                         ? "0 20px 60px rgba(0,0,0,0.75)"
                         : "0 20px 50px rgba(0,0,0,0.25)",
@@ -162,6 +167,7 @@ export default function Header({ darkMode, setDarkMode }) {
 
               {/* Menu Icon (Properly aligned) */}
               <IconButton
+                className="menu-toggle-btn"
                 onClick={() => setMenuOpen((prev) => !prev)}
                 sx={{
                   display: { xs: "flex", md: "none" },
@@ -172,7 +178,7 @@ export default function Header({ darkMode, setDarkMode }) {
                   borderRadius: "15px",
                   background: "transparent",
                   color: darkMode ? "#fff" : "#0f172a",
-                  border: "1px solid rgba(255,255,255,0.2)",
+                  border: "0px solid rgba(255,255,255,0.2)",
                   transition: "all 0.3s ease",
                   "&:hover": { transform: "scale(1.08)" },
                 }}
@@ -205,61 +211,66 @@ export default function Header({ darkMode, setDarkMode }) {
       </motion.div>
 
       {/* Center Dropdown (only menu blurred) */}
+      {/* Right Slide-In Dropdown */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.4 }}
             style={{
               position: "fixed",
               inset: 0,
-              background: "rgba(0,0,0,0)",
+              // background: "rgbrgba(0, 0, 0, 0.34)",
+              // backdropFilter: "blur(1px)",
+              // WebkitBackdropFilter: "blur(1px)",
               zIndex: 1300,
               display: "flex",
-              justifyContent: "center",
+              justifyContent: "flex-end",
               alignItems: "center",
             }}
           >
+            {/* Slide-in menu container */}
             <motion.div
               ref={menuRef}
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.3 }}
+              initial={{ x: "100%", opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: "-100%", opacity: 0 }}
+              transition={{
+                duration: 0.6,
+                ease: [0.25, 1, 0.5, 1],
+              }}
               style={{
-                width: "90vw",
-                maxWidth: 400,
-                borderRadius: "20px",
-                padding: "40px 0",
-                background: darkMode
-                  ? "rgba(255, 255, 255, 0.1)"
-                  : "rgba(255, 255, 255, 0.1)",
-                backdropFilter: "blur(20px) saturate(180%)",
-                WebkitBackdropFilter: "blur(20px) saturate(180%)",
-                border: darkMode
-                  ? "1px solid rgba(255,255,255,0.15)"
-                  : "1px solid rgba(0,0,0,0.2)",
-                boxShadow: darkMode
-                  ? "0 20px 60px rgba(0,0,0,0.75)"
-                  : "0 20px 50px rgba(0,0,0,0.25)",
+                marginTop: "40px",
+                width: "70vw",
+                maxWidth: 250,
+                height: "100vh",
+                padding: "90px 30px",
+                borderRadius: "20px 0 0 20px",
+                // background: darkMode
+                //   ? "rgba(25,25,25,0.65)"
+                //   : "rgba(255,255,255,0.6)",
+                // backdropFilter: "blur(20px)",
+                // WebkitBackdropFilter: "blur(20px)",
+                // // border: darkMode
+                //   ? "1px solid rgba(255,255,255,0.1)"
+                //   : "1px solid rgba(0,0,0,0.1)",
+                // boxShadow: darkMode
+                //   ? "0 0 40px rgba(0,0,0,0.6)"
+                //   : "0 0 40px rgba(0,0,0,0.2)",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                gap: 18,
+                gap: 20,
               }}
             >
               {links.map((link, i) => (
                 <motion.div
                   key={link.to}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    delay: i * 0.06 + 0.1,
-                    type: "spring",
-                    stiffness: 90,
-                  }}
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.07 + 0.1 }}
                 >
                   <NavLink
                     to={link.to}
@@ -267,26 +278,28 @@ export default function Header({ darkMode, setDarkMode }) {
                     style={{ textDecoration: "none" }}
                   >
                     <motion.div
-                      whileHover={{ scale: 1.08, y: -3 }}
+                      whileHover={{ scale: 1.08, x: 5 }}
                       whileTap={{ scale: 0.94 }}
                       style={{
-                        padding: "13px 35px",
-                        borderRadius: "16px",
-                        background: darkMode
-                          ? "rgba(255,255,255,0.3)"
-                          : "rgba(255,255,255,0.3)",
+                        padding: "10px 30px",
+                        borderRadius: "20px",
                         color: darkMode ? "#fff" : "#0f172a",
                         fontWeight: 600,
                         fontSize: "1rem",
+                        textAlign: "center",
+                        width: "180px",
+                        background: darkMode
+                          ? "rgba(255,255,255,0)"
+                          : "rgba(255,255,255,0)",
+                        backdropFilter: "blur(16px)",
+                        WebkitBackdropFilter: "blur(16px)",
                         border: darkMode
-                          ? "1px solid rgba(255,255,255,0.15)"
+                          ? "1px solid rgba(255,255,255,0.12)"
                           : "1px solid rgba(0,0,0,0.1)",
                         boxShadow: darkMode
-                          ? "0 20px 60px rgba(0,0,0,0.75)"
-                          : "0 20px 50px rgba(0,0,0,0.25)",
-                        textAlign: "center",
-                        transition: "all 0.3s ease",
-                        width: "200px",
+                          ? "0 8px 32px rgba(170, 170, 170, 0.08)"
+                          : "0 8px 32px rgba(0,0,0,0.08)",
+                        transition: "all 0.5s ease-in-out",
                       }}
                     >
                       {link.label}

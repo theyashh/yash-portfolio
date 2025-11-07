@@ -243,10 +243,14 @@ export default function Projects() {
         }
 
         .frosted-card:hover {
-          transform: perspective(900px) rotateX(0deg) rotateY(0deg) scale(1.05);
+          // transform: perspective(900px) rotateX(0deg) rotateY(0deg) scale(1.05);
+          // box-shadow:
+          //   0 25px 45px rgba(31, 38, 135, 0.45),
+          //   inset 0 0 15px rgba(255, 255, 255, 0.25);
           box-shadow:
-            0 25px 45px rgba(31, 38, 135, 0.45),
-            inset 0 0 15px rgba(255, 255, 255, 0.25);
+            0 0 25px rgba(14, 165, 233, 0.4),
+            inset 0 0 10px rgba(14, 165, 233, 0.3);
+          transform: scale(1.01);
         }
 
         .glass-btn {
