@@ -1,11 +1,14 @@
-<<<<<<< HEAD
 # 🪩 Yash Roy — Portfolio Website
 
-=======
+<p align="center">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=FFD62E" />
+  <img src="https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+  <img src="https://img.shields.io/badge/FramerMotion-EF00FF?style=for-the-badge&logo=framer&logoColor=white" />
+  <img src="https://img.shields.io/badge/MUI-007FFF?style=for-the-badge&logo=mui&logoColor=white" />
+  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" />
+</p>
 
-# 🪩 Yash Roy — Portfolio Website
-
->>>>>>> efefd3ad2d4c87ac3633d1505086c9f516d26e6a
 > 🚀 A modern, responsive personal portfolio built with **React + Framer Motion + Tailwind CSS + Material UI**, featuring smooth animations, dark/light mode, and an interactive resume viewer.
 
 ![Preview](https://user-images.githubusercontent.com/00000000/portfolio-preview.gif)
@@ -13,10 +16,7 @@
 ---
 
 ## 🌐 Live Demo
-<<<<<<< HEAD
 
-=======
->>>>>>> efefd3ad2d4c87ac3633d1505086c9f516d26e6a
 🔗 [https://yashroy.github.io/yash-portfolio/](https://yashroy.github.io/yash-portfolio/)
 
 ---
@@ -29,7 +29,6 @@ This portfolio showcases my professional journey — skills, projects, and achie
 
 ## ⚙️ Tech Stack
 
-<<<<<<< HEAD
 | Category            | Technologies                                      |
 | ------------------- | ------------------------------------------------- |
 | **Frontend**        | React.js, React Router, Tailwind CSS, Material UI |
@@ -37,15 +36,6 @@ This portfolio showcases my professional journey — skills, projects, and achie
 | **Build Tool**      | Vite                                              |
 | **Deployment**      | GitHub Pages                                      |
 | **Other Libraries** | Lucide Icons, React Typed                         |
-=======
-| Category | Technologies |
-|-----------|---------------|
-| **Frontend** | React.js, React Router, Tailwind CSS, Material UI |
-| **Animation** | Framer Motion |
-| **Build Tool** | Vite |
-| **Deployment** | GitHub Pages |
-| **Other Libraries** | Lucide Icons, React Typed |
->>>>>>> efefd3ad2d4c87ac3633d1505086c9f516d26e6a
 
 ---
 
@@ -59,11 +49,7 @@ This portfolio showcases my professional journey — skills, projects, and achie
 ✅ **Dynamic Typing Intro** — Animated headline with changing roles  
 ✅ **Projects & Skills Section** — Showcases tech stack and highlights  
 ✅ **Cat Animation 🐾** — Adds personality to the homepage  
-<<<<<<< HEAD
 ✅ **Optimized SEO Tags** — Metadata and responsive title handling
-=======
-✅ **Optimized SEO Tags** — Metadata and responsive title handling  
->>>>>>> efefd3ad2d4c87ac3633d1505086c9f516d26e6a
 
 ---
 
@@ -72,116 +58,62 @@ This portfolio showcases my professional journey — skills, projects, and achie
 ```
 yash-portfolio/
 ├── public/
-<<<<<<< HEAD
 │   └── redirects
 │
 ├── src/
 │   ├── assets/
-|   |    |── .jpeg, .gif, .png
-│   |    └── .pdf
-|   |
+│   │   ├── .jpeg, .gif, .png
+│   │   └── .pdf
+│   │
 │   ├── components/
-|   |    |
-|   |    └──layout/
-|   |        |── Footer.jsx
-|   |        └── Header.jsx
-|   |
+│   │   └── layout/
+│   │       ├── Footer.jsx
+│   │       └── Header.jsx
+│   │
 │   ├── routes/
 │   │   ├── Home.jsx
 │   │   ├── Resume.jsx
 │   │   ├── Contact.jsx
-|   |   ├── Blog.jsx
-|   |   ├── Experience.jsx
-|   |   ├── Projects.jsx
-|   |   ├── Resume.jsx
+│   │   ├── Blog.jsx
+│   │   ├── Experience.jsx
+│   │   ├── Projects.jsx
 │   │   └── Education.jsx
-|   |
+│   │
 │   ├── App.jsx
 │   ├── main.jsx
-|   |
 │   └── styles/
 │       └── globals.css
 ├── package.json
-├── package-lock.json
 ├── postcss.config.js
 ├── vite.config.mjs
 ├── tailwind.config.js
 └── README.md
-
-=======
-│   ├── favicon.ico
-│   ├── index.html
-│   └── assets/
-│       ├── cat.gif
-│       ├── geeks.gif
-│       └── Resume.pdf
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── context/
-│   ├── pages/
-│   │   ├── Home.jsx
-│   │   ├── Resume.jsx
-│   │   ├── Contact.jsx
-│   │   └── Education.jsx
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── styles/
-│       └── globals.css
-├── package.json
-└── README.md
->>>>>>> efefd3ad2d4c87ac3633d1505086c9f516d26e6a
 ```
 
 ---
 
 ## 💻 Installation & Setup
 
-1. **Clone the Repository**
-<<<<<<< HEAD
+```bash
+# 1️⃣ Clone the Repository
+git clone https://github.com/YashRoy/yash-portfolio.git
+cd yash-portfolio
 
-=======
->>>>>>> efefd3ad2d4c87ac3633d1505086c9f516d26e6a
-   ```bash
-   git clone https://github.com/YashRoy/yash-portfolio.git
-   cd yash-portfolio
-   ```
+# 2️⃣ Install Dependencies
+npm install
 
-2. **Install Dependencies**
-<<<<<<< HEAD
+# 3️⃣ Run Development Server
+npm run dev
 
-=======
->>>>>>> efefd3ad2d4c87ac3633d1505086c9f516d26e6a
-   ```bash
-   npm install
-   ```
+# 4️⃣ Build for Production
+npm run build
 
-3. **Run Development Server**
-<<<<<<< HEAD
-
-=======
->>>>>>> efefd3ad2d4c87ac3633d1505086c9f516d26e6a
-   ```bash
-   npm run dev
-   ```
-
-4. **Build for Production**
-<<<<<<< HEAD
-
-=======
->>>>>>> efefd3ad2d4c87ac3633d1505086c9f516d26e6a
-   ```bash
-   npm run build
-   ```
-
-5. **Deploy to GitHub Pages**
-   ```bash
-   npm run deploy
-   ```
+# 5️⃣ Deploy to GitHub Pages
+npm run deploy
+```
 
 ---
 
-<<<<<<< HEAD
 ## 📚 Website Structure
 
 | Section           | Description                                                                                             |
@@ -197,68 +129,29 @@ yash-portfolio/
 
 ---
 
-## ⚙️ Tech Stack
-
-**Frontend:** React.js, Tailwind CSS, Framer Motion
-
-<!-- **Backend:** Node.js, Express.js   -->
-<!-- **Database:** MongoDB, SQL   -->
-<!-- **AI/ML Tools:** TensorFlow, YOLOv10, PaddleO -->
-=======
-## 🌈 Page Sections
-
-| Section | Description |
-|----------|-------------|
-| 🏠 **Home** | Hero intro, typing animation, skills & buttons |
-| 🎓 **Education** | Timeline of degrees and institutions |
-| 🧑‍💻 **Projects** | Highlights of major projects |
-| 📄 **Resume** | Modern PDF viewer with zoom & download controls |
-| ✉️ **Contact** | Contact form or links to social platforms |
-| 🐈 **Easter Egg** | Floating cat animation on bottom corner |
->>>>>>> efefd3ad2d4c87ac3633d1505086c9f516d26e6a
-
----
-
 ## 🪄 Animations
 
-<<<<<<< HEAD
-- **Framer Motion** for transitions & hover effects
-- **React Typed** for typing animation
-- **Scroll-triggered reveals**
-- **3D glass effect** using Tailwind’s backdrop filters
-=======
-- **Framer Motion** for transitions & hover effects  
-- **React Typed** for typing animation  
-- **Scroll-triggered reveals**  
-- **3D glass effect** using Tailwind’s backdrop filters  
->>>>>>> efefd3ad2d4c87ac3633d1505086c9f516d26e6a
+✨ **Framer Motion** — For page transitions & hover effects  
+⌨️ **React Typed** — For typing animation in hero section  
+🌀 **Scroll-triggered reveals** — Subtle entrance animations  
+💎 **3D Glass Effect** — Tailwind backdrop filters for depth
 
 ---
 
 ## 📱 Responsive Design
 
-✅ Supports all breakpoints — mobile, tablet, laptop, and ultrawide monitors  
-<<<<<<< HEAD
-✅ Uses Tailwind’s responsive utilities and adaptive scaling
-=======
-✅ Uses Tailwind’s responsive utilities and adaptive scaling  
->>>>>>> efefd3ad2d4c87ac3633d1505086c9f516d26e6a
+✅ Works seamlessly on mobile, tablet, and desktop  
+✅ Tailwind’s responsive utilities ensure adaptive scaling  
+✅ Smooth scaling of components and animations
 
 ---
 
 ## 🧩 Future Enhancements
 
-<<<<<<< HEAD
-- 🌐 Add a Blog / Articles section
-- 🧠 Add Project filtering by tech stack
-- 🎨 Add theme customization panel
-- 🔥 Integrate Live Chatbot using LLM API
-=======
-- 🌐 Add a Blog / Articles section  
-- 🧠 Add Project filtering by tech stack  
-- 🎨 Add theme customization panel  
-- 🔥 Integrate Live Chatbot using LLM API  
->>>>>>> efefd3ad2d4c87ac3633d1505086c9f516d26e6a
+- 🌐 Add blog filtering by tags & categories
+- 🧠 Project filtering by tech stack
+- 🎨 Theme customization panel
+- 🔥 Integrate AI-powered chatbot or portfolio assistant
 
 ---
 
@@ -267,19 +160,12 @@ yash-portfolio/
 **👋 Yash Roy**  
 🎓 B.Tech in Computer Science, Sharda University  
 💻 Passionate about Web Development, AI, and System Design  
-<<<<<<< HEAD
 🚀 Focused on MERN stack, modern UI, and scalable systems
 
-🔗 **Connect With Me**
-
-=======
-🚀 Focused on MERN stack, modern UI, and scalable systems  
-
-🔗 **Connect With Me**
->>>>>>> efefd3ad2d4c87ac3633d1505086c9f516d26e6a
-- 💼 [LinkedIn](https://linkedin.com/in/yashroy)
-- 🐙 [GitHub](https://github.com/YashRoy)
-- ✉️ [Email Me](mailto:yashroy@example.com)
+**🌐 Connect With Me:**  
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/yashroy)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/YashRoy)
+[![Email](https://img.shields.io/badge/Email-yashroy%40example.com-red?style=for-the-badge)](mailto:yashroy@example.com)
 
 ---
 
@@ -291,4 +177,4 @@ This project is open-source under the **MIT License**.
 
 ## 💬 Support
 
-If you like this project, consider giving it a ⭐ on GitHub — it helps more people discover my work!
+If you like this project, please ⭐ the repository — it helps others discover it and supports my work! 🙌
