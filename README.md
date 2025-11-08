@@ -165,7 +165,7 @@ npm run deploy
 **🌐 Connect With Me:**  
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/yashroy)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/YashRoy)
-[![Email](https://img.shields.io/badge/Email-yashroy%40example.com-red?style=for-the-badge)](mailto:yashroy@example.com)
+[![Email](https://img.shields.io/badge/Email-itsroysons@gmail.com-red?style=for-the-badge)](mailto:yitsroysons@gmail.com)
 
 ---
 
