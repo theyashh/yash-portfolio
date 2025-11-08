@@ -49,27 +49,41 @@ This portfolio showcases my professional journey — skills, projects, and achie
 ```
 yash-portfolio/
 ├── public/
-│   ├── favicon.ico
-│   ├── index.html
-│   └── assets/
-│       ├── cat.gif
-│       ├── geeks.gif
-│       └── Resume.pdf
+│   └── redirects
+│
 ├── src/
 │   ├── assets/
+|   |    |── .jpeg, .gif, .png
+│   |    └── .pdf
+|   |
 │   ├── components/
-│   ├── context/
-│   ├── pages/
+|   |    |
+|   |    └──layout/
+|   |        |── Footer.jsx
+|   |        └── Header.jsx
+|   |
+│   ├── routes/
 │   │   ├── Home.jsx
 │   │   ├── Resume.jsx
 │   │   ├── Contact.jsx
+|   |   ├── Blog.jsx
+|   |   ├── Experience.jsx
+|   |   ├── Projects.jsx
+|   |   ├── Resume.jsx
 │   │   └── Education.jsx
+|   |
 │   ├── App.jsx
 │   ├── main.jsx
+|   |
 │   └── styles/
 │       └── globals.css
 ├── package.json
+├── package-lock.json
+├── postcss.config.js
+├── vite.config.mjs
+├── tailwind.config.js
 └── README.md
+
 ```
 
 ---
@@ -108,16 +122,28 @@ yash-portfolio/
 
 ---
 
-## 🌈 Page Sections
+## 📚 Website Structure
 
-| Section           | Description                                     |
-| ----------------- | ----------------------------------------------- |
-| 🏠 **Home**       | Hero intro, typing animation, skills & buttons  |
-| 🎓 **Education**  | Timeline of degrees and institutions            |
-| 🧑‍💻 **Projects**   | Highlights of major projects                    |
-| 📄 **Resume**     | Modern PDF viewer with zoom & download controls |
-| ✉️ **Contact**    | Contact form or links to social platforms       |
-| 🐈 **Easter Egg** | Floating cat animation on bottom corner         |
+| Section           | Description                                                                                             |
+| ----------------- | ------------------------------------------------------------------------------------------------------- |
+| 🏠 **Home**       | Hero intro with dynamic typing animation, glass UI, and animated skills showcase.                       |
+| 🎓 **Education**  | Interactive timeline of academic journey and institutions.                                              |
+| 💼 **Experience** | Highlights of professional experiences, internships, and roles with elegant cards and hover animations. |
+| 🧑‍💻 **Projects**   | Showcases major projects — with previews and live links.                                                |
+| 📝 **Blog**       | Personal developer blog with animated cards for articles, tech insights, and tutorials.                 |
+| 📄 **Resume**     | Integrated PDF viewer with zoom, download controls, and dark mode support.                              |
+| ✉️ **Contact**    | Contact form and direct links to LinkedIn, GitHub, and email.                                           |
+| 🐈 **Easter Egg** | Floating cat animation for a friendly touch at the bottom corner.                                       |
+
+---
+
+## ⚙️ Tech Stack
+
+**Frontend:** React.js, Tailwind CSS, Framer Motion
+
+<!-- **Backend:** Node.js, Express.js   -->
+<!-- **Database:** MongoDB, SQL   -->
+<!-- **AI/ML Tools:** TensorFlow, YOLOv10, PaddleO -->
 
 ---
 
