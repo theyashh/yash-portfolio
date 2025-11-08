@@ -42,8 +42,11 @@ export default function Experience() {
   const [expanded, setExpanded] = useState(null);
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 py-16 sm:py-20">
-      <h2 className="text-3xl sm:text-4xl font-extrabold mb-12 bg-gradient-to-r from-blue-600 to-cyan-400 text-transparent bg-clip-text text-center">
+    <section
+      className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 overflow-hidden"
+      style={{ marginTop: "20px" }}
+    >
+      <h2 className="text-2xl sm:text-4xl font-extrabold mb-12 bg-gradient-to-r from-blue-600 to-cyan-400 text-transparent bg-clip-text">
         Experience
       </h2>
 
@@ -83,18 +86,22 @@ export default function Experience() {
               </motion.a>
             </div>
 
-            {/* Expand/Collapse Section */}
-            <AnimatePresence>
+            {/* Downward Expand/Collapse Section */}
+            <AnimatePresence initial={false}>
               {expanded === i && (
                 <motion.div
-                  layout
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.4 }}
                   className="overflow-hidden mt-4"
                 >
-                  <div className="text-gray-700 dark:text-gray-300 space-y-3">
+                  <motion.div
+                  // initial={{ y: -10, opacity: 0 }}
+                  // animate={{ y: 0, opacity: 1 }}
+                  // transition={{ duration: 0.3, delay: 0.1 }}
+                  // className="text-gray-700 dark:text-gray-300 space-y-3"
+                  >
                     <p>
                       <strong>Skills Learned:</strong> {exp.skills.join(", ")}
                     </p>
@@ -105,12 +112,12 @@ export default function Experience() {
                       <strong>Duration:</strong> {exp.duration}
                     </p>
                     <p className="pt-2 text-justify">{exp.desc}</p>
-                  </div>
+                  </motion.div>
                 </motion.div>
               )}
             </AnimatePresence>
 
-            {/* Summary when collapsed */}
+            {/* Collapsed Preview */}
             {expanded !== i && (
               <motion.p
                 layout
@@ -125,7 +132,7 @@ export default function Experience() {
               </motion.p>
             )}
 
-            {/* Button */}
+            {/* Toggle Button */}
             <button
               onClick={() => setExpanded(expanded === i ? null : i)}
               className="glass-btn mt-6 flex items-center justify-left gap-2 text-sm font-semibold px-4 py-2 rounded-full transition-all duration-300 mx-auto"
@@ -157,10 +164,6 @@ export default function Experience() {
           transition: all 0.3s ease;
         }
         .frosted-card:hover {
-          // transform: perspective(900px) rotateX(0deg) rotateY(0deg) scale(1.05);
-          // box-shadow:
-          //   0 25px 45px rgba(31, 38, 135, 0.45),
-          //   inset 0 0 15px rgba(255, 255, 255, 0.25);
           box-shadow:
             0 0 25px rgba(14, 165, 233, 0.4),
             inset 0 0 10px rgba(14, 165, 233, 0.3);

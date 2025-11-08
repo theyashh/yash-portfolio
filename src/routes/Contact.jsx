@@ -126,21 +126,27 @@ export default function Contact() {
         ))}
       </div>
 
-      {/* 💎 Frosted Glass Card */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
+      {/* 🌐 Floating Heading (outside the card) */}
+      <motion.h2
+        initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="relative z-10 text-2xl sm:text-xl md:text-3xl font-extrabold mb-10 bg-gradient-to-r from-blue-400 to-cyan-300 text-transparent bg-clip-text text-center"
+      >
+        Let’s Collaborate & Connect 🌐
+      </motion.h2>
+
+      {/* 💎 Unfolding Poster Card */}
+      <motion.div
+        initial={{ scaleY: 0, opacity: 0, y: -50 }}
+        animate={{ scaleY: 1, opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.8,
+          ease: [0.25, 0.8, 0.25, 1],
+        }}
+        style={{ transformOrigin: "top center" }}
         className="relative z-10 w-full max-w-5xl rounded-3xl border p-10 sm:p-14 md:p-16 frosted-card text-center"
       >
-        <motion.h2
-          className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-10 bg-gradient-to-r from-blue-400 to-cyan-300 text-transparent bg-clip-text"
-          animate={{ y: [0, -4, 0] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-        >
-          Let’s Collaborate & Connect 🌐
-        </motion.h2>
-
         {/* Social Icons */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 sm:gap-10 justify-items-center">
           {socials.map((item, i) => (
@@ -206,7 +212,7 @@ export default function Contact() {
         </div>
       </motion.div>
 
-      {/* 🌫️ Glass Effect Styles */}
+      {/* 🌫️ Styles */}
       <style>{`
         .frosted-card {
           background: rgba(255, 255, 255, 0.12);
@@ -216,6 +222,7 @@ export default function Contact() {
           box-shadow:
             0 8px 32px rgba(31, 38, 135, 0.37),
             inset 0 0 15px rgba(255, 255, 255, 0.1);
+          transition: all 0.4s ease;
         }
 
         .frosted-card:hover {
@@ -226,8 +233,8 @@ export default function Contact() {
         }
 
         [data-theme='dark'] .frosted-card {
-          background: rgba(13, 17, 23, 0.4);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          background: rgba(13, 17, 23, 0.45);
+          border: 1px solid rgba(255, 255, 255, 0.15);
         }
       `}</style>
     </section>

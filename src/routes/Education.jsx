@@ -51,7 +51,7 @@ export default function Education() {
 
   // animation for cards sliding in from the right
   const cardVariants = {
-    hidden: { opacity: 0, x: 800 },
+    hidden: { opacity: 0, x: 200 },
     visible: (i) => ({
       opacity: 1,
       x: 0,

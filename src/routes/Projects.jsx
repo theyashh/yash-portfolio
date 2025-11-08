@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CloseIcon from "@mui/icons-material/Close";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import DescriptionIcon from "@mui/icons-material/Description";
 
 import anprImg from "../assets/anpr.jpeg";
 import edupathImg from "../assets/edupath.jpg";
@@ -13,21 +15,46 @@ const demo = [
   {
     id: 1,
     title: "ANPR System",
-    excerpt: "Automatic number plate recognition system for smart parking.",
+    excerpt:
+      "AI-powered Automated Number Plate Recognition and Smart Parking Management.",
     image: anprImg,
-    stack: ["YOLOv10", "PaddleOCR", "Node.js", "SQLite"],
+    stack: ["YOLOv10", "EasyOCR", "NLP", "SQL"],
     details: {
+      github: "https://github.com/YOUR_USERNAME/ANPR-System",
+      report: "https://drive.google.com/YOUR_REPORT_LINK",
       subHeadings: [
         "Overview",
-        "Technologies Used",
-        "Database",
+        "Motivation",
+        "Technologies & Architecture",
+        "Implementation",
         "Challenges",
         "Results",
+        "Conclusion",
       ],
-      paragraph:
-        "This project detects and recognizes vehicle number plates using YOLOv10 for detection and PaddleOCR for character recognition. Integrated with Node.js backend and SQLite to store recognized numbers and dynamically assign parking slots.",
-      university: "Sharda University, Greater Noida",
-      website: "https://www.sharda.ac.in/",
+      paragraph: `
+The Automatic Number Plate Recognition (ANPR) System is an intelligent computer-vision-based solution designed to modernize urban parking management. 
+It leverages real-time vehicle detection and OCR to automate entry, exit, and slot allocation processes—reducing human error and improving operational efficiency in crowded urban spaces.
+      `,
+      sections: {
+        Overview: `
+Urban parking facilities often face congestion, inefficient manual entry systems, and limited automation. 
+Our ANPR project integrates **YOLOv8** for vehicle detection and EasyOCR for license plate recognition to automate this process.`,
+        Motivation: `
+The motivation stems from the growing challenges of urbanization—delays, mismanagement, and security risks in traditional parking systems.`,
+        "Technologies & Architecture": `
+YOLOv10, EasyOCR, NLP, and SQL form the system core for real-time detection and logging.`,
+        Implementation: `
+YOLOv10 detects plates, EasyOCR extracts text, and SQL manages the data.`,
+        Challenges: `
+• Handling motion blur and lighting variations.  
+• Ensuring privacy and model accuracy.`,
+        Results: `
+• 96.3% detection accuracy  
+• 94.8% OCR accuracy  
+• 0.32s/frame performance.`,
+        Conclusion: `
+A scalable AI-based parking automation framework with planned IoT and cloud integration.`,
+      },
     },
   },
   {
@@ -37,11 +64,11 @@ const demo = [
     image: edupathImg,
     stack: ["React", "Node.js", "MongoDB", "Express"],
     details: {
+      github: "https://github.com/YOUR_USERNAME/EduPath",
+      report: "https://drive.google.com/YOUR_REPORT_LINK",
       subHeadings: ["Features", "Frontend", "Backend", "Database", "Outcome"],
       paragraph:
         "EduPath is a MERN-based platform similar to Udemy. It includes course listings, live search, profile management, and progress tracking.",
-      university: "Sharda University, Greater Noida",
-      website: "https://www.sharda.ac.in/",
     },
   },
   {
@@ -51,11 +78,11 @@ const demo = [
     image: resumeImg,
     stack: ["Python", "Streamlit", "NLP", "Spacy"],
     details: {
+      github: "https://github.com/YOUR_USERNAME/Resume-Analyser",
+      report: "https://drive.google.com/YOUR_REPORT_LINK",
       subHeadings: ["Goal", "Model", "Accuracy", "Performance", "Deployment"],
       paragraph:
         "Developed an AI-powered web app using NLP to extract keywords from resumes and match them with job descriptions. Achieved over 95% accuracy.",
-      university: "Sharda University, Greater Noida",
-      website: "https://www.sharda.ac.in/",
     },
   },
   {
@@ -65,11 +92,11 @@ const demo = [
     image: parkingImg,
     stack: ["YOLOv8", "OpenCV", "Flask", "SQLite"],
     details: {
+      github: "https://github.com/YOUR_USERNAME/Smart-Parking",
+      report: "https://drive.google.com/YOUR_REPORT_LINK",
       subHeadings: ["Setup", "Detection", "Database", "Results", "Use Case"],
       paragraph:
         "This smart parking system detects vehicles and assigns slots in real time using YOLOv8 and OpenCV, integrated with Flask backend.",
-      university: "Sharda University, Greater Noida",
-      website: "https://www.sharda.ac.in/",
     },
   },
   {
@@ -79,11 +106,11 @@ const demo = [
     image: shoppyImg,
     stack: ["PHP", "MySQL", "Bootstrap", "JavaScript"],
     details: {
+      github: "https://github.com/YOUR_USERNAME/Shoppy",
+      report: "https://drive.google.com/YOUR_REPORT_LINK",
       subHeadings: ["Frontend", "Backend", "Database", "Features", "Outcome"],
       paragraph:
         "Built a complete e-commerce platform using PHP and MySQL with cart, login system, and order tracking functionality.",
-      university: "Sharda University, Greater Noida",
-      website: "https://www.sharda.ac.in/",
     },
   },
 ];
@@ -134,13 +161,33 @@ export default function Projects() {
                   ))}
                 </div>
 
-                <motion.button
-                  onClick={() => setOpen(p.id)}
-                  whileHover={{ scale: 1.05 }}
-                  className="glass-btn mt-4 flex items-center justify-center gap-2 text-sm font-semibold px-4 py-2 rounded-full transition-all duration-300"
-                >
-                  <ExpandMoreIcon fontSize="small" /> Read More
-                </motion.button>
+                <div className="flex gap-3 mt-4 flex-wrap">
+                  <motion.a
+                    href={p.details.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.07 }}
+                    className="glass-btn flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold"
+                  >
+                    <GitHubIcon fontSize="small" /> GitHub
+                  </motion.a>
+                  <motion.a
+                    href={p.details.report}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.07 }}
+                    className="glass-btn flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold"
+                  >
+                    <DescriptionIcon fontSize="small" /> Report
+                  </motion.a>
+                  <motion.button
+                    onClick={() => setOpen(p.id)}
+                    whileHover={{ scale: 1.05 }}
+                    className="glass-btn flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-full transition-all duration-300"
+                  >
+                    <ExpandMoreIcon fontSize="small" /> Read More
+                  </motion.button>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -148,26 +195,23 @@ export default function Projects() {
       </div>
 
       {/* Popup Modal */}
-      {/* Popup Modal */}
       <AnimatePresence>
         {selected && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/0 dark:bg-black/0 backdrop-blur-md p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/0 dark:bg-black/0 backdrop-blur-md p-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
             <motion.div
               className="relative mt-20 w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl border transition-all duration-300 
-          bg-white/50 dark:bg-gray-900/50 
-          backdrop-blur-xl 
-          border-gray-200/40 dark:border-white/20"
+              bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl 
+              border-gray-200/40 dark:border-white/20"
               initial={{ scale: 0.9, y: 40, opacity: 0 }}
               animate={{ scale: 1, y: 0, opacity: 1 }}
               exit={{ scale: 0.9, y: 40, opacity: 0 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
             >
-              {/* Close Button */}
               <button
                 onClick={() => setOpen(null)}
                 className="absolute top-4 right-4 text-gray-800 dark:text-gray-300 hover:text-red-400 transition-all duration-200 z-10"
@@ -175,23 +219,31 @@ export default function Projects() {
                 <CloseIcon fontSize="medium" />
               </button>
 
-              {/* Scrollable Content */}
               <div className="max-h-[85vh] overflow-y-auto scrollbar-hide p-6 sm:p-10">
-                <h3 className="text-3xl font-extrabold bg-gradient-to-r from-blue-500 to-cyan-400 text-transparent bg-clip-text mb-3">
+                <h3 className="text-3xl font-extrabold bg-gradient-to-r from-blue-500 to-cyan-400 text-transparent bg-clip-text mb-6">
                   {selected.title}
                 </h3>
-                <p className="text-sm text-black-100 dark:text-white-100 italic mb-4">
-                  {selected.details.university}
-                </p>
 
-                <a
-                  href={selected.details.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block mb-6 text-sm font-semibold text-blue-500 dark:text-cyan-300 hover:underline"
-                >
-                  Visit University Website ↗
-                </a>
+                <div className="flex flex-wrap gap-3 mb-6">
+                  <motion.a
+                    href={selected.details.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.07 }}
+                    className="glass-btn flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold"
+                  >
+                    <GitHubIcon fontSize="small" /> GitHub
+                  </motion.a>
+                  <motion.a
+                    href={selected.details.report}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.07 }}
+                    className="glass-btn flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold"
+                  >
+                    <DescriptionIcon fontSize="small" /> Project Report
+                  </motion.a>
+                </div>
 
                 <motion.img
                   src={selected.image}
@@ -205,20 +257,26 @@ export default function Projects() {
                   {selected.details.paragraph}
                 </p>
 
-                <div className="grid sm:grid-cols-2 gap-3">
-                  {selected.details.subHeadings.map((sh, i) => (
-                    <motion.div
-                      key={i}
-                      whileHover={{ scale: 1.05 }}
-                      className="px-4 py-2 rounded-lg text-center bg-gradient-to-r 
-                from-blue-100/40 to-cyan-100/40 
-                dark:from-gray-700/60 dark:to-gray-800/60 
-                border border-white/20 
-                text-blue-600 dark:text-cyan-300 font-medium text-sm shadow-[0_0_15px_rgba(0,150,255,0.15)]"
-                    >
-                      {sh}
-                    </motion.div>
-                  ))}
+                <div className="space-y-4">
+                  {selected.details.subHeadings.map(
+                    (sh, i) =>
+                      selected.details.sections && (
+                        <motion.div
+                          key={i}
+                          className="border rounded-xl p-4 bg-white/20 dark:bg-gray-800/40 backdrop-blur-sm"
+                          whileHover={{ scale: 1.02 }}
+                        >
+                          <details>
+                            <summary className="cursor-pointer text-blue-600 dark:text-cyan-300 font-semibold">
+                              {sh}
+                            </summary>
+                            <p className="text-gray-700 dark:text-gray-300 mt-2 leading-relaxed whitespace-pre-line">
+                              {selected.details.sections[sh]}
+                            </p>
+                          </details>
+                        </motion.div>
+                      )
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -232,24 +290,16 @@ export default function Projects() {
           border: 1px solid rgba(255, 255, 255, 0.25);
           backdrop-filter: blur(25px) saturate(180%);
           border-radius: 22px;
-          box-shadow:
-            0 10px 30px rgba(31, 38, 135, 0.3),
-            inset 0 0 10px rgba(255, 255, 255, 0.15);
-          transform-style: preserve-3d;
-          transform: perspective(900px) rotateX(2deg) rotateY(-2deg);
+          box-shadow: 0 10px 30px rgba(31, 38, 135, 0.3),
+                      inset 0 0 10px rgba(255, 255, 255, 0.15);
           transition: all 0.4s ease-in-out;
           position: relative;
           overflow: hidden;
         }
 
         .frosted-card:hover {
-          // transform: perspective(900px) rotateX(0deg) rotateY(0deg) scale(1.05);
-          // box-shadow:
-          //   0 25px 45px rgba(31, 38, 135, 0.45),
-          //   inset 0 0 15px rgba(255, 255, 255, 0.25);
-          box-shadow:
-            0 0 25px rgba(14, 165, 233, 0.4),
-            inset 0 0 10px rgba(14, 165, 233, 0.3);
+          box-shadow: 0 0 25px rgba(14, 165, 233, 0.4),
+                      inset 0 0 10px rgba(14, 165, 233, 0.3);
           transform: scale(1.01);
         }
 
@@ -263,9 +313,8 @@ export default function Projects() {
         }
 
         .glass-btn:hover {
-          box-shadow:
-            0 0 25px rgba(14, 165, 233, 0.7),
-            inset 0 0 12px rgba(14, 165, 233, 0.3);
+          box-shadow: 0 0 25px rgba(14, 165, 233, 0.7),
+                      inset 0 0 12px rgba(14, 165, 233, 0.3);
           transform: scale(1.07);
         }
 
