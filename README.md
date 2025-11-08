@@ -17,7 +17,7 @@
 
 ## 🌐 Live Demo
 
-🔗 [https://yashroy.github.io/yash-portfolio/](https://yashroy.github.io/yash-portfolio/)
+🔗 [https://theyashh.github.io/yash-portfolio/](https://theyashh.github.io/yash-portfolio/))
 
 ---
 
